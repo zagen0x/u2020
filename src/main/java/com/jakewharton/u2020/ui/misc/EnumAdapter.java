@@ -49,7 +49,7 @@ public class EnumAdapter<T extends Enum<T>> extends BindableAdapter<T> {
   }
 
   @Override
-  public final View newDropDownView(LayoutInflater inflater, int position, ViewGroup container) {
+  public View newDropDownView(LayoutInflater inflater, int position, ViewGroup container) {
     return inflater.inflate(android.R.layout.simple_spinner_dropdown_item, container, false);
   }
 

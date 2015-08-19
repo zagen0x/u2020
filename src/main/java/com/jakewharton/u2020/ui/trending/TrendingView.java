@@ -62,21 +62,17 @@ public final class TrendingView extends LinearLayout
   @Inject IntentFactory intentFactory;
   @Inject DrawerLayout drawerLayout;
 
-  private final PublishSubject<TrendingTimespan> timespanSubject;
-  private final EnumAdapter<TrendingTimespan> timespanAdapter;
-  private final TrendingAdapter trendingAdapter;
+  private final PublishSubject<TrendingTimespan> timespanSubject = PublishSubject.create();
   private final CompositeSubscription subscriptions = new CompositeSubscription();
+
+  private EnumAdapter<TrendingTimespan> timespanAdapter;
+  private TrendingAdapter trendingAdapter;
 
   public TrendingView(Context context, AttributeSet attrs) {
     super(context, attrs);
     if (!isInEditMode()) {
       Injector.obtain(context).inject(this);
     }
-
-    timespanSubject = PublishSubject.create();
-    timespanAdapter = new TrendingTimespanAdapter(
-        new ContextThemeWrapper(getContext(), R.style.Theme_U2020_TrendingTimespan));
-    trendingAdapter = new TrendingAdapter(picasso, this);
   }
 
   @Override protected void onFinishInflate() {
@@ -95,12 +91,14 @@ public final class TrendingView extends LinearLayout
       }
     });
 
+    timespanAdapter = new TrendingTimespanAdapter(timespanView.getContext());
     timespanView.setAdapter(timespanAdapter);
     timespanView.setSelection(TrendingTimespan.WEEK.ordinal());
 
     swipeRefreshView.setColorSchemeResources(R.color.accent);
     swipeRefreshView.setOnRefreshListener(this);
 
+    trendingAdapter = new TrendingAdapter(picasso, this);
     trendingAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
       @Override public void onChanged() {
         animatorView.setDisplayedChildId(trendingAdapter.getItemCount() == 0 //
