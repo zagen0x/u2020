@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -20,6 +21,8 @@ import butterknife.BindView;
 import butterknife.BindDimen;
 import butterknife.ButterKnife;
 import butterknife.OnItemSelected;
+
+import com.jakewharton.u2020.ActivityComponent;
 import com.jakewharton.u2020.R;
 import com.jakewharton.u2020.data.Funcs;
 import com.jakewharton.u2020.data.Injector;
@@ -75,7 +78,11 @@ public final class TrendingView extends LinearLayout
   public TrendingView(Context context, AttributeSet attrs) {
     super(context, attrs);
     if (!isInEditMode()) {
-      Injector.obtain(context).inject(this);
+      try {
+        ((ActivityComponent) Injector.obtain(context)).inject(this);
+      }catch (Exception e){
+        e.printStackTrace();
+      }
     }
 
     timespanSubject = PublishSubject.create();

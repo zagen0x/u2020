@@ -9,6 +9,7 @@ import dagger.Subcomponent;
 /**
  * Created by alexander.bratusenko on 08/08/16.
  */
+@PerActivity
 @Subcomponent(modules = {MainActivityModule.class})
 public interface ActivityComponent {
     void inject(MainActivity mainActivity);

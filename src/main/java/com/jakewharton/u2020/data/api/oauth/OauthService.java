@@ -2,6 +2,8 @@ package com.jakewharton.u2020.data.api.oauth;
 
 import android.app.IntentService;
 import android.content.Intent;
+
+import com.jakewharton.u2020.AppComponent;
 import com.jakewharton.u2020.data.Injector;
 import javax.inject.Inject;
 
@@ -14,8 +16,8 @@ public final class OauthService extends IntentService {
 
   @Override public void onCreate() {
     super.onCreate();
-    ObjectGraph appGraph = Injector.obtain(getApplication());
-    appGraph.inject(this);
+    AppComponent appComponent = Injector.obtain(getApplication());
+    appComponent.inject(this);
   }
 
   @Override protected void onHandleIntent(Intent intent) {
