@@ -13,13 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
-@Module(
-    complete = false,
-    library = true,
-    injects = {
-        OauthService.class
-    }
-)
+@Module
 public final class ApiModule {
   public static final HttpUrl PRODUCTION_API_URL = HttpUrl.parse("https://api.github.com/");
 

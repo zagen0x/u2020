@@ -8,15 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 
-@Module(
-    injects = {
-        DebugViewContainer.class,
-        DebugView.class,
-    },
-    complete = false,
-    library = true,
-    overrides = true
-)
+@Module
 public class DebugUiModule {
   @Provides @Singleton ViewContainer provideViewContainer(DebugViewContainer debugViewContainer,
       @IsInstrumentationTest boolean isInstrumentationTest) {

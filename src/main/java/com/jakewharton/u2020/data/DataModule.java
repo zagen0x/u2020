@@ -22,10 +22,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.jakewharton.byteunits.DecimalByteUnit.MEGABYTES;
 
 @Module(
-    includes = ApiModule.class,
-    complete = false,
-    library = true
-)
+    includes = ApiModule.class)
 public final class DataModule {
   static final int DISK_CACHE_SIZE = (int) MEGABYTES.toBytes(50);
 

@@ -24,12 +24,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.mock.NetworkBehavior;
 import timber.log.Timber;
 
-@Module(
-    includes = DebugApiModule.class,
-    complete = false,
-    library = true,
-    overrides = true
-)
+@Module(includes = DebugApiModule.class)
 public final class DebugDataModule {
   private static final int DEFAULT_ANIMATION_SPEED = 1; // 1x (normal) speed.
   private static final boolean DEFAULT_PICASSO_DEBUGGING = false; // Debug indicators displayed

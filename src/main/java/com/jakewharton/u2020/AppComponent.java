@@ -21,5 +21,5 @@ public interface AppComponent {
     void inject(DebugViewContainer debugViewContainer);
 
     void inject(DebugView debugView);
-    
+
 }
