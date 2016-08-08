@@ -1,14 +1,15 @@
 package com.jakewharton.u2020.data;
 
 import android.content.Context;
-import dagger.ObjectGraph;
+
+import com.jakewharton.u2020.AppComponent;
 
 public final class Injector {
   private static final String INJECTOR_SERVICE = "com.jakewharton.u2020.injector";
 
   @SuppressWarnings({"ResourceType", "WrongConstant"}) // Explicitly doing a custom service.
-  public static ObjectGraph obtain(Context context) {
-    return (ObjectGraph) context.getSystemService(INJECTOR_SERVICE);
+  public static AppComponent obtain(Context context) {
+    return (AppComponent) context.getSystemService(INJECTOR_SERVICE);
   }
 
   public static boolean matchesService(String name) {

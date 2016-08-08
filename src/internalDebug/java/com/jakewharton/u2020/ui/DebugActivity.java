@@ -3,12 +3,13 @@ package com.jakewharton.u2020.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+
+import com.jakewharton.u2020.AppComponent;
 import com.jakewharton.u2020.R;
 import com.jakewharton.u2020.data.Injector;
-import dagger.ObjectGraph;
 
 public final class DebugActivity extends Activity {
-  private ObjectGraph appGraph;
+  private AppComponent appGraph;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

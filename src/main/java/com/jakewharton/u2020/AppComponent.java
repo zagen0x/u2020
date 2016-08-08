@@ -1,6 +1,7 @@
 package com.jakewharton.u2020;
 
 import com.jakewharton.u2020.data.api.oauth.OauthService;
+import com.jakewharton.u2020.ui.MainActivityModule;
 import com.jakewharton.u2020.ui.debug.DebugView;
 import com.jakewharton.u2020.ui.debug.DebugViewContainer;
 
@@ -12,7 +13,7 @@ import dagger.Component;
  * Created by alexander.bratusenko on 08/08/16.
  */
 @Singleton
-@Component(modules = {})
+@Component(modules = {DebugU2020Module.class})
 public interface AppComponent {
     void inject(U2020App app);
 
@@ -21,5 +22,7 @@ public interface AppComponent {
     void inject(DebugViewContainer debugViewContainer);
 
     void inject(DebugView debugView);
+
+    ActivityComponent plus(MainActivityModule module);
 
 }

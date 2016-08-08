@@ -7,14 +7,13 @@ import com.jakewharton.u2020.data.Injector;
 import com.jakewharton.u2020.data.LumberYard;
 import com.jakewharton.u2020.ui.ActivityHierarchyServer;
 import com.squareup.leakcanary.LeakCanary;
-import dagger.ObjectGraph;
 import javax.inject.Inject;
 import timber.log.Timber;
 
 import static timber.log.Timber.DebugTree;
 
 public final class U2020App extends Application {
-  private ObjectGraph objectGraph;
+  private AppComponent objectGraph;
 
   @Inject ActivityHierarchyServer activityHierarchyServer;
   @Inject LumberYard lumberYard;
@@ -31,7 +30,9 @@ public final class U2020App extends Application {
       // TODO Timber.plant(new CrashlyticsTree());
     }
 
-    objectGraph = ObjectGraph.create(Modules.list(this));
+    objectGraph = DaggerAppComponent.builder()
+            .debugU2020Module(new DebugU2020Module(this))
+            .build();
     objectGraph.inject(this);
 
     lumberYard.cleanUp();
