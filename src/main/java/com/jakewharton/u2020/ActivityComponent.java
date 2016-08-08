@@ -11,7 +11,8 @@ import dagger.Subcomponent;
  */
 @PerActivity
 @Subcomponent(modules = {MainActivityModule.class})
-public interface ActivityComponent {
+public interface ActivityComponent extends IAppComponent {
+
     void inject(MainActivity mainActivity);
 
     void inject(TrendingView view);

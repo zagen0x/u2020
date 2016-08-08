@@ -14,14 +14,7 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = {DebugU2020Module.class})
-public interface AppComponent {
-    void inject(U2020App app);
-
-    void inject(OauthService service);
-
-    void inject(DebugViewContainer debugViewContainer);
-
-    void inject(DebugView debugView);
+public interface AppComponent extends IAppComponent {
 
     ActivityComponent plus(MainActivityModule module);
 

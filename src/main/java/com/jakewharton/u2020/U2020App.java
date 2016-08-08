@@ -13,7 +13,7 @@ import timber.log.Timber;
 import static timber.log.Timber.DebugTree;
 
 public final class U2020App extends Application {
-  private AppComponent objectGraph;
+  private IAppComponent appComponent;
 
   @Inject ActivityHierarchyServer activityHierarchyServer;
   @Inject LumberYard lumberYard;
@@ -30,10 +30,10 @@ public final class U2020App extends Application {
       // TODO Timber.plant(new CrashlyticsTree());
     }
 
-    objectGraph = DaggerAppComponent.builder()
+    appComponent = DaggerAppComponent.builder()
             .debugU2020Module(new DebugU2020Module(this))
             .build();
-    objectGraph.inject(this);
+    appComponent.inject(this);
 
     lumberYard.cleanUp();
     Timber.plant(lumberYard.tree());
@@ -43,7 +43,7 @@ public final class U2020App extends Application {
 
   @Override public Object getSystemService(@NonNull String name) {
     if (Injector.matchesService(name)) {
-      return objectGraph;
+      return appComponent;
     }
     return super.getSystemService(name);
   }
