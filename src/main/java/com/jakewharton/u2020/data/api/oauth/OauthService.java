@@ -3,7 +3,6 @@ package com.jakewharton.u2020.data.api.oauth;
 import android.app.IntentService;
 import android.content.Intent;
 import com.jakewharton.u2020.data.Injector;
-import dagger.ObjectGraph;
 import javax.inject.Inject;
 
 public final class OauthService extends IntentService {
